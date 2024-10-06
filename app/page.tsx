@@ -5,8 +5,10 @@ import Matrix from "./components/Matrix/Matrix";
 export default function Page() {
   return (
     <>
-      <Header />
-      <Matrix />
+      <div className="globalWrapper">
+        <Header />
+        <Matrix />
+      </div>
     </>
   );
 }

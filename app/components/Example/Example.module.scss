@@ -1,0 +1,49 @@
+.exampleDecisions {
+  display: inline-block;
+  width: 250px;
+  margin-bottom: 60px;
+
+  animation: 3s ease infinite fadeinout;
+
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+@media screen and (min-width: 350px) {
+  .exampleDecisions {
+    width: 300px;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .exampleDecisions {
+    position: relative;
+    top: 100px;
+    right: 95px;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 700px) {
+  .exampleDecisions {
+    width: 250px;
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
