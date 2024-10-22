@@ -1,110 +1,210 @@
-.htuContainer {
-  background-color: #efefef;
-  max-width: 440px;
+.main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 
-  .guideSteps {
-    padding: 10px;
-    list-style: decimal inside;
-    font-size: 1rem;
-
-    li {
-      margin-bottom: 20px;
-    }
-  }
-
-  p {
-    margin-bottom: 2px;
-    font-size: 1rem;
-  }
-
-  aside {
-    padding-left: 5px;
-    margin-bottom: 10px;
-  }
-
-  .notes li {
-    margin-bottom: 1px;
-    font-size: 0.9rem;
-  }
-
-  span {
-    font-weight: bold;
-  }
+  margin: 0 auto;
+  margin-bottom: 40px;
 }
 
-@media screen and (min-width: 400px) {
-  .htuContainer {
-    .guideSteps {
-      font-size: 1.1rem;
-    }
-
-    p {
-      margin-bottom: 3px;
-      font-size: 1.1rem;
-    }
-
-    .notes li {
-      margin-bottom: 2px;
-      font-size: 1rem;
-    }
-  }
+.main svg {
+  width: 13px;
+  height: 13px;
 }
 
-@media screen and (min-width: 600px) {
-  .htuContainer {
-    max-width: 745px;
+.addButton {
+  position: relative;
 
-    .guideSteps {
-      padding: 20px;
-      font-size: 1.2rem;
+  padding: 5px;
+  padding-right: 8px;
+  border: none;
 
-      li {
-        margin-bottom: 20px;
-      }
-    }
-
-    p {
-      font-size: 1.1rem;
-    }
-
-    .notes li {
-      font-size: 1rem;
-    }
-  }
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media screen and (min-width: 600px) and (max-width: 750px) {
-  .htuContainer {
-    max-width: 620px;
-  }
+.addButton:focus-visible,
+.deleteButton:focus-visible {
+  outline: 2px solid white;
+  border-radius: 2px;
 }
 
-@media screen and (min-width: 750px) {
-  .htuContainer {
-    width: 745px;
-  }
-}
-
-.htuHeading {
-  padding: 5px 0;
-
-  text-align: center;
-  font-size: 1.5rem;
+.addButton,
+.deleteButton {
   color: white;
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.addFactor {
+  top: 40px;
+}
+
+.addOption {
+  left: 80px;
+}
+
+.option,
+.factorRow td {
+  position: relative;
+}
+
+.deleteButton {
+  display: none;
+  border: none;
+
+  position: absolute;
+  right: 0%;
+  top: 23%;
+}
+
+.factorRow .deleteButton {
+  top: 22%;
+}
+
+.deleteButton svg {
+  width: 11px;
+  height: 11px;
+  pointer-events: none;
+}
+
+th:hover .deleteButton,
+td:hover .deleteButton {
+  display: initial;
+}
+
+// Minimum of 2 factors needed to show delete button
+.factorRow:only-child .deleteButton {
+  display: none;
+}
+
+// Minimum of 3 options needed to show delete button
+// Factors[1] Weight[2] Option 1[3] Option 2[4]
+tr:not(:has(th:nth-child(5))) {
+  .option:nth-child(3) .deleteButton,
+  .option:nth-child(4) .deleteButton {
+    display: none;
+  }
+}
+
+.optionsHeading,
+.fixedHeading {
+  color: white;
+  background-color: #334960;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.nameChange {
+  color: white;
+  text-align: center;
+}
+
+.nameChange,
+.numberChange {
+  border: none;
+}
+
+.numberChange {
+  border-bottom: 0.5px solid lightgrey;
+
+  font-weight: 500;
+}
+
+.numberChange,
+.total {
+  font-size: 0.9rem;
+}
+
+.optionsHeading,
+.fixedHeading,
+.nameChange,
+.numberChange {
+  padding: 10px;
+}
+
+.nameChange:focus-visible,
+.numberChange:focus-visible {
+  outline: none;
+}
+
+/* Alternating blue */
+tr:nth-child(odd) .nameChange,
+.option:nth-child(odd),
+.option:nth-child(odd) .nameChange,
+.factorRow:nth-child(odd) td:first-child {
   background-color: #406489;
 }
 
-@media screen and (min-width: 400px) {
-  .htuHeading {
-    font-size: 1.7rem;
-  }
+tr:nth-child(even) .nameChange,
+.option:nth-child(even),
+.option:nth-child(even) .nameChange,
+.factorRow:nth-child(even) td:first-child {
+  background-color: #587da5;
+}
+
+.nameChange {
+  font-size: 0.9rem;
+}
+
+.option .nameChange {
+  width: 100px;
+}
+
+.factorRow .nameChange {
+  width: 150px;
 }
 
 @media screen and (min-width: 600px) {
-  .htuHeading {
-    font-size: 2.2rem;
+  .optionsHeading,
+  .fixedHeading {
+    font-size: 1.1rem;
+  }
+
+  .nameChange,
+  .numberChange,
+  .total {
+    font-size: 1rem;
+  }
+
+  .option .nameChange {
+    width: 150px;
+  }
+
+  .factorRow .nameChange {
+    width: 200px;
+  }
+}
+
+td .numberChange {
+  text-align: center;
+  width: 100%;
+}
+
+/* Alternating grey */
+td:nth-child(even) .numberChange {
+  background-color: #efefef;
+}
+
+td:nth-child(odd) .numberChange {
+  background-color: #d9d9d9;
+  border-bottom: 0.5px solid rgb(185, 185, 185);
+}
+
+.total {
+  text-align: center;
+  font-weight: 600;
+  color: white;
+
+  &:nth-child(even) {
+    background-color: #406489;
+  }
+
+  &:nth-child(odd) {
+    background-color: #587da5;
+  }
+
+  &.highScore {
+    background-color: rgb(0, 148, 0);
   }
 }

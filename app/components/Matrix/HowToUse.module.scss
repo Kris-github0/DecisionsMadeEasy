@@ -1,0 +1,111 @@
+.htuContainer {
+  background-color: #efefef;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 80px;
+
+  .guideSteps {
+    padding: 10px;
+    list-style: decimal inside;
+    font-size: 1rem;
+
+    li {
+      margin-bottom: 20px;
+    }
+  }
+
+  p {
+    margin-bottom: 2px;
+    font-size: 1rem;
+  }
+
+  aside {
+    padding-left: 5px;
+    margin-bottom: 10px;
+  }
+
+  .notes li {
+    margin-bottom: 1px;
+    font-size: 0.9rem;
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .htuContainer {
+    .guideSteps {
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin-bottom: 3px;
+      font-size: 1.1rem;
+    }
+
+    .notes li {
+      margin-bottom: 2px;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .htuContainer {
+    max-width: 745px;
+
+    .guideSteps {
+      padding: 20px;
+      font-size: 1.2rem;
+
+      li {
+        margin-bottom: 20px;
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    .notes li {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 750px) {
+  .htuContainer {
+    max-width: 620px;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .htuContainer {
+    width: 745px;
+  }
+}
+
+.htuHeading {
+  padding: 5px 0;
+
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #406489;
+}
+
+@media screen and (min-width: 400px) {
+  .htuHeading {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .htuHeading {
+    font-size: 2.2rem;
+  }
+}

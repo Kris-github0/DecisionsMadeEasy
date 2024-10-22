@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Matrix.module.scss";
+import styles from "./HowToUse.module.scss";
 
 export default function HowToUse() {
   return (

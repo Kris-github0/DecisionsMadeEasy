@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Example from "../Example/Example";
 import CardGroup from "../CardGroup/CardGroup";
@@ -27,7 +29,12 @@ export default function Header() {
           </div>
           <Example />
         </div>
-        <button className={styles.cta}>Get Started</button>
+        <button
+          className={styles.cta}
+          onClick={() => document.getElementById("wadmTable").scrollIntoView()}
+        >
+          Get Started
+        </button>
         <CardGroup />
       </header>
     </div>
