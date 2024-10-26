@@ -1,4 +1,6 @@
-[![](https://github.com/user-attachments/assets/b6480282-764d-4940-9dd4-060ae9f1278d)](https://decisions-made-easy.vercel.app/)
+<p align="center">
+   <a href="https://decisions-made-easy.vercel.app/"><img src="https://github.com/user-attachments/assets/b6480282-764d-4940-9dd4-060ae9f1278d"></a> 
+</p>
 
 ## Introduction
 
