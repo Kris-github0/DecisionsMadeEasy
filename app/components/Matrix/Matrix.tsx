@@ -136,9 +136,14 @@ export default function Matrix() {
 
     for (let i = 0; i < tableBody.children.length; i++) {
       for (let j = 2; j < tableBody.children[i].children.length; j++) {
-        const weight =
-          tableBody.children[i].children[1].firstElementChild.value;
-        const score = tableBody.children[i].children[j].firstElementChild.value;
+        const weight = (
+          tableBody.children[i].children[1]
+            .firstElementChild as HTMLInputElement
+        ).value;
+        const score = (
+          tableBody.children[i].children[j]
+            .firstElementChild as HTMLInputElement
+        ).value;
 
         if (weight === "" || !validNum(weight)) {
           break;
@@ -201,7 +206,7 @@ export default function Matrix() {
           min={1}
           max={10}
           className={styles.numberChange}
-          onWheel={(e) => e.target.blur()}
+          onWheel={(e) => (e.target as HTMLInputElement).blur()}
         />
       </td>
     );
