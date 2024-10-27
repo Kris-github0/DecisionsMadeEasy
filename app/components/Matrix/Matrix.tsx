@@ -9,7 +9,7 @@ export default function Matrix() {
   function addFactor() {
     const tableHeader = document.getElementById("optionsList");
     const tableBody = document.querySelector("tbody");
-    const numInputEl = `<td><input type="number" value="" min="1" max="10" class="${styles.numberChange}" onwheel="this.blur()"/></td>`;
+    const numInputEl = `<td><input type="number" value="" min="1" max="10" class="${styles.numberChange}" onwheel="this.blur()" aria-label="score"/></td>`;
     const numToFillRow = tableHeader.childElementCount - 1;
     const defaultName = `Factor ${tableBody.childElementCount + 1}`;
 
@@ -20,10 +20,12 @@ export default function Matrix() {
               <button class="${styles.deleteButton}">${strDeleteIcon}</button>
               <input type="text" value="${defaultName}" class="${
       styles.nameChange
-    }"/>
+    }" aria-label="factor"/>
             </td>
             ${numInputEl.repeat(numToFillRow)}
           `;
+
+    row.children[1].children[0].setAttribute("aria-label", "weight");
     row.setAttribute("class", styles.factorRow);
     fragment.append(row);
     tableBody.append(fragment);
@@ -52,7 +54,7 @@ export default function Matrix() {
 
     const fragment = new DocumentFragment();
     const option = document.createElement("th");
-    option.innerHTML = `<button class="${styles.deleteButton}">${strDeleteIcon}</button><input type="text" value="${defaultName}" class="${styles.nameChange}"/>`;
+    option.innerHTML = `<button class="${styles.deleteButton}">${strDeleteIcon}</button><input type="text" value="${defaultName}" class="${styles.nameChange}" aria-label="option"/>`;
     option.setAttribute("class", styles.option);
     tableBody.childNodes.forEach((row) => {
       const cell = document.createElement("td");
@@ -176,12 +178,13 @@ export default function Matrix() {
     totalsRow.innerHTML = `<td colspan="2" class="${styles.fixedHeading}">Total</td> ${scoreTally}`;
   }
 
-  function AddButton({ cellType, typeClass }) {
+  function AddButton({ cellType, typeClass, ariaLabel }) {
     return (
       <td>
         <button
           onClick={cellType}
           className={`${typeClass} ${styles.addButton}`}
+          aria-label={ariaLabel}
         >
           <AddIcon />
         </button>
@@ -197,7 +200,7 @@ export default function Matrix() {
     );
   }
 
-  function NumberCell() {
+  function NumberCell({ ariaLabel }) {
     return (
       <td>
         <input
@@ -207,6 +210,7 @@ export default function Matrix() {
           max={10}
           className={styles.numberChange}
           onWheel={(e) => (e.target as HTMLInputElement).blur()}
+          aria-label={ariaLabel}
         />
       </td>
     );
@@ -223,8 +227,16 @@ export default function Matrix() {
         >
           <thead>
             <tr>
-              <AddButton cellType={addFactor} typeClass={styles.addFactor} />
-              <AddButton cellType={addOption} typeClass={styles.addOption} />
+              <AddButton
+                cellType={addFactor}
+                typeClass={styles.addFactor}
+                ariaLabel="add factor"
+              />
+              <AddButton
+                cellType={addOption}
+                typeClass={styles.addOption}
+                ariaLabel="add option"
+              />
 
               <th
                 className={styles.optionsHeading}
@@ -250,6 +262,7 @@ export default function Matrix() {
                   type="text"
                   defaultValue="Option 1"
                   className={styles.nameChange}
+                  aria-label="option"
                 />
               </th>
               <th className={styles.option}>
@@ -258,6 +271,7 @@ export default function Matrix() {
                   type="text"
                   defaultValue="Option 2"
                   className={styles.nameChange}
+                  aria-label="option"
                 />
               </th>
             </tr>
@@ -274,11 +288,12 @@ export default function Matrix() {
                   type="text"
                   defaultValue="Factor 1"
                   className={styles.nameChange}
+                  aria-label="factor"
                 />
               </td>
-              <NumberCell />
-              <NumberCell />
-              <NumberCell />
+              <NumberCell ariaLabel="weight" />
+              <NumberCell ariaLabel="score" />
+              <NumberCell ariaLabel="score" />
             </tr>
           </tbody>
           <tfoot>
